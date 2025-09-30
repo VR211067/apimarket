@@ -21,8 +21,8 @@ app.use((req, res, next) => {
         message: "Ruta no encontrada. Favor realizar pruebas en los siguientes endpoints:",
         endpoints: [
             // Usa una variable de entorno o una constante para la URL base si es posible
-            "https://https://apimarket-production-f956.up.railway.app//usuarios",
-            "https://https://apimarket-production-f956.up.railway.app//productos"
+            "https://apimarket-production-f956.up.railway.app//usuarios",
+            "https://apimarket-production-f956.up.railway.app//productos"
         ]
     });
     
