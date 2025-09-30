@@ -11,10 +11,21 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(marketRoutes)
 
-app.use((req,res,next)=>{
-    res.status(404).json({
-        message:'Endpoint No encontrado'
-    })
-})
+// Middleware para manejar peticiones a rutas no definidas (Error 404)
+app.use((req, res, next) => {
+    // 1. Establece el código de estado HTTP a 404 (Not Found)
+    res.status(404);
 
+    // 2. Envía una respuesta JSON informativa al cliente
+    res.json({
+        message: "Ruta no encontrada. Favor realizar pruebas en los siguientes endpoints:",
+        endpoints: [
+            // Usa una variable de entorno o una constante para la URL base si es posible
+            "https://[TU URL GENERADA EN RAILWAY]/usuarios",
+            "https://[TU URL GENERADA EN RAILWAY]/productos"
+        ]
+    });
+    
+    // NOTA: No es necesario llamar a 'next()' aquí porque ya se envió la respuesta.
+});
 export default app;
